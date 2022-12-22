@@ -32,7 +32,7 @@
 
 <div class="mb-3">
     <label  for="name" class="form-label">Name</label>
-    <input type="text" name='name' class="form-control">
+    <input type="text" name="name" class="form-control">
 
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
@@ -50,16 +50,23 @@
 
 
 <?php
+function insert_query($btn_name,$query){
   include('connection.php');
-  if(isset($_POST["btn"])){
-    mysqli_query($cn,"insert into employee(name,email,password) values ('".$_POST["name"]."','".$_POST["email"]."','".$_POST["password"]."')");
-    echo "<script>alert('inserted')</script>";
-};
+   if(isset($_POST[$btn_name])){
+       mysqli_query($cn,$query);
+       echo "<script>alert('inserted')</script>";
+   }
+ }
 
-  
+insert_query("btn","insert into employee(name,email,password) values ('".$_POST['name']."','".$_POST['email']."','".$_POST['password']."')");
 
   include('footer.php');
     ?>
+
+<?php
+
+
+?>
 
   
 </html>
