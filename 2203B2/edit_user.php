@@ -25,13 +25,15 @@
 include("connection.php");
 
 $data = mysqli_query($con,"select * from users where id = ".$_GET["id"]." ");
-if($std_data = mysqli_fetch_array($data)){
+if($std1_data = mysqli_fetch_array($data)){
 ?>
 
 <form method="POST">
-    <input type="text" name="username" class="form-control" value="<?php echo $std_data["name"] ?>" placeholder="Enter Name">
+    <input type="text" name="username" class="form-control" value="<?php echo $std1_data["name"] ?>" placeholder="Enter Name">
     <br>
-    <input type="email" name="useremail" class="form-control" value="<?php echo $std_data["email"] ?>"  placeholder="Enter Email">
+    <input type="email" name="useremail" class="form-control" value="<?php echo $std1_data["email"] ?>"  placeholder="Enter Email">
+    <br>
+    <input type="file" name="userfile" class="form-control"> 
     <br>
    
     <button type="submit" name="btn" class="btn btn-dark">Update</button>
