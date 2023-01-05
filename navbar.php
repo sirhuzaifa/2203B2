@@ -9,19 +9,37 @@ session_start();
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="show_data.php">Show-Data</a>
+      <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="insert.php">Insert</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="insert.php">Create Account</a>
+          <a class="nav-link active" aria-current="page" href="show_data.php">Show</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="edit.php">Edit</a>
         </li>
         <?php if(isset($_SESSION["name"])){ ?>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="logout.php">Logout</a>
         </li>
         <?php } ?>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
       </ul>
-      <form class="d-flex">
+      <form class="d-flex" style="margin-left:65%";>
         <?php if(isset($_SESSION["name"])){ echo  $_SESSION["name"]; }else{ echo "Not SignIn"; } ?>
       </form>
     </div>
