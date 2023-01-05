@@ -1,83 +1,77 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
-</head>
-<body>
-<div class="container">
-  <div class="overlay" id="overlay">
-    <div class="sign-in" id="sign-in">
-      <h1>Welcome Back!</h1>
-      <p>To keep connected with us please login with your personal info</p>
-      <a href="logout.php" style="text-decoration:none;"><button class="switch-button" id="slide-right-button">Sign In</button></a>
-    </div>
-    <div class="sign-up" id="sign-up">
-      <h1>Hello, Friend!</h1>
-      <p>Enter your personal details and start a journey with us</p>
-      <a href="logout.php"><button class="switch-button" id="slide-left-button" >Sign Up</button></a>
-    </div>
-  </div>
-  <div class="form">
-    <div class="sign-in" id="sign-in-info">
-      <h1>Sign In</h1>
-      <div class="social-media-buttons">
-        <div class="icon">
-          <svg viewBox="0 0 24 24">
-            <path fill="#000000" d="M17,2V2H17V6H15C14.31,6 14,6.81 14,7.5V10H14L17,10V14H14V22H10V14H7V10H10V6A4,4 0 0,1 14,2H17Z" />
-        </svg>
-        </div>
-        <div class="icon">
-        <svg viewBox="0 0 24 24">
-            <path fill="#000000" d="M23,11H21V9H19V11H17V13H19V15H21V13H23M8,11V13.4H12C11.8,14.4 10.8,16.4 8,16.4C5.6,16.4 3.7,14.4 3.7,12C3.7,9.6 5.6,7.6 8,7.6C9.4,7.6 10.3,8.2 10.8,8.7L12.7,6.9C11.5,5.7 9.9,5 8,5C4.1,5 1,8.1 1,12C1,15.9 4.1,19 8,19C12,19 14.7,16.2 14.7,12.2C14.7,11.7 14.7,11.4 14.6,11H8Z" />
-        </svg>
-        </div>
-        <div class="icon">
-        <svg viewBox="0 0 24 24">
-          <path fill="#000000" d="M21,21H17V14.25C17,13.19 15.81,12.31 14.75,12.31C13.69,12.31 13,13.19 13,14.25V21H9V9H13V11C13.66,9.93 15.36,9.24 16.5,9.24C19,9.24 21,11.28 21,13.75V21M7,21H3V9H7V21M5,3A2,2 0 0,1 7,5A2,2 0 0,1 5,7A2,2 0 0,1 3,5A2,2 0 0,1 5,3Z" />
-        </svg>
-        </div>
-      </div>
-      <p class="small">or use your email account:</p>
-      <form id="sign-in-form">      
-        <input type="email" placeholder="Email"/>
-        <input type="password" placeholder="Password"/>
-        <p class="forgot-password">Forgot your password?</p>
-        <button class="control-button in">Sign In</button>
-      </form>
-    </div>
-    <div class="sign-up" id="sign-up-info">
-      <h1>Create Account</h1>
-      <div class="social-media-buttons">
-        <div class="icon">
-          <svg viewBox="0 0 24 24">
-            <path fill="#000000" d="M17,2V2H17V6H15C14.31,6 14,6.81 14,7.5V10H14L17,10V14H14V22H10V14H7V10H10V6A4,4 0 0,1 14,2H17Z" />
-        </svg>
-        </div>
-        <div class="icon">
-        <svg viewBox="0 0 24 24">
-            <path fill="#000000" d="M23,11H21V9H19V11H17V13H19V15H21V13H23M8,11V13.4H12C11.8,14.4 10.8,16.4 8,16.4C5.6,16.4 3.7,14.4 3.7,12C3.7,9.6 5.6,7.6 8,7.6C9.4,7.6 10.3,8.2 10.8,8.7L12.7,6.9C11.5,5.7 9.9,5 8,5C4.1,5 1,8.1 1,12C1,15.9 4.1,19 8,19C12,19 14.7,16.2 14.7,12.2C14.7,11.7 14.7,11.4 14.6,11H8Z" />
-        </svg>
-        </div>
-        <div class="icon">
-        <svg viewBox="0 0 24 24">
-          <path fill="#000000" d="M21,21H17V14.25C17,13.19 15.81,12.31 14.75,12.31C13.69,12.31 13,13.19 13,14.25V21H9V9H13V11C13.66,9.93 15.36,9.24 16.5,9.24C19,9.24 21,11.28 21,13.75V21M7,21H3V9H7V21M5,3A2,2 0 0,1 7,5A2,2 0 0,1 5,7A2,2 0 0,1 3,5A2,2 0 0,1 5,3Z" />
-        </svg>
-        </div>
-      </div>
-      <p class="small">or use your email for registration:</p>
-      <form id="sign-up-form">
-        <input type="text" placeholder="Name"/>
-        <input type="email" placeholder="Email"/>
-        <input type="password" placeholder="Password"/>
-        <button class="control-button up">Sign Up</button>
-      </form>
-    </div>
-  </div>
-</div>
-</body>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Insert</title>
+  </head>
+  <body>
+  
+
+  <?php
+    include("navbar.php");
+  ?>
+
+
+<h1>Insert</h1>
+
+<form method="POST" enctype="multipart/form-data">
+    <input type="text" name="username" class="form-control" placeholder="Enter Name">
+    <br>
+    <input type="email" name="useremail" class="form-control" placeholder="Enter Email">
+    <br>
+    <input type="password" name="userpassword" class="form-control" placeholder="Enter Password">
+    <br>
+    <br>
+    <label>Picture</label>
+    <input type="file" name="userfile" class="form-control">
+    <br>
+    <button type="submit" name="btn" class="btn btn-dark">Submit</button>
+</form>
+
+
+<?php
+    include("footer.php");
+  ?>
+
+
+
+
+<?php 
+
+include("business_logic.php");
+insert_query("btn","insert into users(name,email,password) values( '".$_POST["username"]."', '".$_POST["useremail"]."', '".$_POST["userpassword"]."' ) ");
+
+?>
+
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+
+
+
+
+
+
+
+
+
+
+
+  </body>
 </html>
