@@ -45,7 +45,7 @@
 <?php 
 
 include("business_logic.php");
-insert_query("btn","insert into users(name,email,password) values( '".$_POST["username"]."', '".$_POST["useremail"]."', '".$_POST["userpassword"]."' ) ");
+insert_query("btn","insert into users(name,email,password) values( '".$_POST["username"]."', '".$_POST["useremail"]."', '".md5($_POST["userpassword"])."') ");
 
 ?>
 

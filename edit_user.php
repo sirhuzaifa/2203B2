@@ -28,10 +28,13 @@ $data = mysqli_query($con,"select * from users where id = ".$_GET["id"]." ");
 if($std_data = mysqli_fetch_array($data)){
 ?>
 
-<form method="POST">
+<form method="POST"  enctype="multipart/form-data">
     <input type="text" name="username" class="form-control" value="<?php echo $std_data["name"] ?>" placeholder="Enter Name">
     <br>
     <input type="email" name="useremail" class="form-control" value="<?php echo $std_data["email"] ?>"  placeholder="Enter Email">
+    <br>
+    <label>Picture</label>
+    <input type="file" name="userfile" class="form-control">
     <br>
    
     <button type="submit" name="btn" class="btn btn-dark">Update</button>
@@ -51,6 +54,7 @@ include("connection.php");
 if(isset($_POST["btn"])){
 
     mysqli_query($con,"update users set name = '".$_POST["username"]."' ,email = '".$_POST["useremail"]."'  where id = ".$_GET["id"]." ");
+    move_uploaded_file($_FILES["userfile"]["tmp_name"],"images/".$_GET["id"].".jpeg");
     echo "<script>alert('Updated')</script>";
     echo "<script>window.location.assign('show_data.php')</script>";
     

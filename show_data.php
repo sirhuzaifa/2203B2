@@ -34,7 +34,8 @@
       <th scope="col">#</th>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
-      <th scope="col">Password</th>
+     
+      <th scope="col">Picture</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -55,7 +56,8 @@
       <th scope="row"><?php echo $i ?></th>
       <td><?php echo $user_data["name"] ?></td>
       <td><?php echo $user_data["email"] ?></td>
-      <td><?php echo $user_data["password"] ?></td>
+      
+      <td><img src="images/<?php echo $user_data["id"] ?>.jpeg" height="100px" width="100px"></td>
       <td><a class="btn btn-success" href="edit_user.php?id=<?php echo $user_data["id"] ?>">Edit</a>
       <a class="btn btn-danger" href="delete_user.php?id=<?php echo $user_data["id"] ?>">delete</a>
     </td>

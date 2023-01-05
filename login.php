@@ -48,7 +48,7 @@
   include('connection.php');
   if(isset($_POST["btn"])){
 
-    $data = mysqli_query($con,"select * from users where email = '".$_POST["useremail"]."' and password = '".$_POST["userpassword"]."' ");
+    $data = mysqli_query($con,"select * from users where email = '".$_POST["useremail"]."' and password = '".md5($_POST["userpassword"])."' ");
     if($user_data = mysqli_fetch_array($data)){
         $_SESSION["name"] = $user_data["name"];
         echo "<script>alert('Logged In')</script>";
