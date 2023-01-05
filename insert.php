@@ -1,130 +1,83 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Insert</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
-
-<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-
-<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-
-<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-
-<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-
-<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-
-<link rel="stylesheet" type="text/css" href="css/util.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-
-<meta name="robots" content="noindex, follow">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
 </head>
 <body>
-  <?php
-  include "navbar.php";
-  ?>
-<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<div class="login100-pic js-tilt" data-tilt>
-					<img src="images/img-01.png" alt="IMG">
-				</div>
-
-				<form class="login100-form validate-form">
-					<span class="login100-form-title">
-						Create An Account
-					</span>
-					<div class="wrap-input100 validate-input" data-validate = "Valid name is required">
-						<input class="input100" type="text" name="name" placeholder="Name">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-						<i style class="bi bi-person-circle"></i>
-						</span>
-					</div>
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="email" name="email" placeholder="Email">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-					</div>
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="pass" placeholder="Password">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-					</div>
-					
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Login
-						</button>
-					</div>
-
-					<div class="text-center p-t-136">
-						<a class="txt2" href="insert.php">
-							Already have an  Account
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-						</a>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	
-	
-
-	
-<!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/tilt/tilt.jquery.min.js"></script>
-	<script >
-		$('.js-tilt').tilt({
-			scale: 1.1
-		})
-	</script>
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
-
-<?php
-include "show_data.php";
-?>
-
-<?php
-      include"connection.php";
-      if(isset($_POST['btn'])){
-        $name=$_POST['name'];
-        $email=$_POST['email'];
-        $pass=$_POST['password'];
-        $sql="INSERT INTO users( name, email, password) VALUES ('$name','$email','$pass')";
-        $result=mysqli_query($con,$sql);
-        move_uploaded_file($_FILES["userfile"]["tmp_name"],"images/".mysqli_insert_id($con).".jpeg");
-        if(!$result){
-          die(mysqli_error($con));
-        }
-        else{
-          echo "<script>
-          alert('Inserted')
-          </script>";
-        }
-      }
-?>
-
-<script src="js/main.js"></script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vaafb692b2aea4879b33c060e79fe94621666317369993" integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA==" data-cf-beacon='{"rayId":"781b561a3bcdde53","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2022.11.3","si":100}' crossorigin="anonymous"></script>
+<div class="container">
+  <div class="overlay" id="overlay">
+    <div class="sign-in" id="sign-in">
+      <h1>Welcome Back!</h1>
+      <p>To keep connected with us please login with your personal info</p>
+      <a href="logout.php" style="text-decoration:none;"><button class="switch-button" id="slide-right-button">Sign In</button></a>
+    </div>
+    <div class="sign-up" id="sign-up">
+      <h1>Hello, Friend!</h1>
+      <p>Enter your personal details and start a journey with us</p>
+      <a href="logout.php"><button class="switch-button" id="slide-left-button" >Sign Up</button></a>
+    </div>
+  </div>
+  <div class="form">
+    <div class="sign-in" id="sign-in-info">
+      <h1>Sign In</h1>
+      <div class="social-media-buttons">
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <path fill="#000000" d="M17,2V2H17V6H15C14.31,6 14,6.81 14,7.5V10H14L17,10V14H14V22H10V14H7V10H10V6A4,4 0 0,1 14,2H17Z" />
+        </svg>
+        </div>
+        <div class="icon">
+        <svg viewBox="0 0 24 24">
+            <path fill="#000000" d="M23,11H21V9H19V11H17V13H19V15H21V13H23M8,11V13.4H12C11.8,14.4 10.8,16.4 8,16.4C5.6,16.4 3.7,14.4 3.7,12C3.7,9.6 5.6,7.6 8,7.6C9.4,7.6 10.3,8.2 10.8,8.7L12.7,6.9C11.5,5.7 9.9,5 8,5C4.1,5 1,8.1 1,12C1,15.9 4.1,19 8,19C12,19 14.7,16.2 14.7,12.2C14.7,11.7 14.7,11.4 14.6,11H8Z" />
+        </svg>
+        </div>
+        <div class="icon">
+        <svg viewBox="0 0 24 24">
+          <path fill="#000000" d="M21,21H17V14.25C17,13.19 15.81,12.31 14.75,12.31C13.69,12.31 13,13.19 13,14.25V21H9V9H13V11C13.66,9.93 15.36,9.24 16.5,9.24C19,9.24 21,11.28 21,13.75V21M7,21H3V9H7V21M5,3A2,2 0 0,1 7,5A2,2 0 0,1 5,7A2,2 0 0,1 3,5A2,2 0 0,1 5,3Z" />
+        </svg>
+        </div>
+      </div>
+      <p class="small">or use your email account:</p>
+      <form id="sign-in-form">      
+        <input type="email" placeholder="Email"/>
+        <input type="password" placeholder="Password"/>
+        <p class="forgot-password">Forgot your password?</p>
+        <button class="control-button in">Sign In</button>
+      </form>
+    </div>
+    <div class="sign-up" id="sign-up-info">
+      <h1>Create Account</h1>
+      <div class="social-media-buttons">
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <path fill="#000000" d="M17,2V2H17V6H15C14.31,6 14,6.81 14,7.5V10H14L17,10V14H14V22H10V14H7V10H10V6A4,4 0 0,1 14,2H17Z" />
+        </svg>
+        </div>
+        <div class="icon">
+        <svg viewBox="0 0 24 24">
+            <path fill="#000000" d="M23,11H21V9H19V11H17V13H19V15H21V13H23M8,11V13.4H12C11.8,14.4 10.8,16.4 8,16.4C5.6,16.4 3.7,14.4 3.7,12C3.7,9.6 5.6,7.6 8,7.6C9.4,7.6 10.3,8.2 10.8,8.7L12.7,6.9C11.5,5.7 9.9,5 8,5C4.1,5 1,8.1 1,12C1,15.9 4.1,19 8,19C12,19 14.7,16.2 14.7,12.2C14.7,11.7 14.7,11.4 14.6,11H8Z" />
+        </svg>
+        </div>
+        <div class="icon">
+        <svg viewBox="0 0 24 24">
+          <path fill="#000000" d="M21,21H17V14.25C17,13.19 15.81,12.31 14.75,12.31C13.69,12.31 13,13.19 13,14.25V21H9V9H13V11C13.66,9.93 15.36,9.24 16.5,9.24C19,9.24 21,11.28 21,13.75V21M7,21H3V9H7V21M5,3A2,2 0 0,1 7,5A2,2 0 0,1 5,7A2,2 0 0,1 3,5A2,2 0 0,1 5,3Z" />
+        </svg>
+        </div>
+      </div>
+      <p class="small">or use your email for registration:</p>
+      <form id="sign-up-form">
+        <input type="text" placeholder="Name"/>
+        <input type="email" placeholder="Email"/>
+        <input type="password" placeholder="Password"/>
+        <button class="control-button up">Sign Up</button>
+      </form>
+    </div>
+  </div>
+</div>
 </body>
 </html>
