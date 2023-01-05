@@ -1,3 +1,5 @@
 <?php
-$con = mysqli_connect("localhost","root","","1334986");
+
+$con = mysqli_connect('localhost','root','','hafsa');
+
 ?>

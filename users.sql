@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2022 at 08:56 AM
+-- Generation Time: Jan 04, 2023 at 06:30 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `aptechnn`
+-- Database: `hafsa`
 --
 
 -- --------------------------------------------------------
@@ -31,19 +31,18 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `status` varchar(50) NOT NULL DEFAULT 'Active'
+  `status` varchar(50) NOT NULL DEFAULT 'Active',
+  `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `status`) VALUES
-(2, 'Hafsa ali 123', 'hafsheikh72@gmail.com', '123', 'Active'),
-(3, 'marium', 'marium@gmail.com', '5498656986', 'Active'),
-(4, 'raiha', 'raiha123@gmail.com', 'fldfwenvp', 'Active'),
-(5, 'jungkook', 'jungkook@gmail.com', '6780479', 'Active');
+INSERT INTO `users` (`id`, `name`, `email`, `status`, `password`) VALUES
+(2, 'Hafsa ali', 'hafsa@gamil.com', 'Active', 'd41d8cd98f00b204e9800998ecf8427e'),
+(3, 'Raiha', 'raiha@gmail.com', 'Active', 'd41d8cd98f00b204e9800998ecf8427e'),
+(4, 'Marium', 'marium@gmail.com', 'Active', 'd41d8cd98f00b204e9800998ecf8427e');
 
 --
 -- Indexes for dumped tables
@@ -63,7 +62,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

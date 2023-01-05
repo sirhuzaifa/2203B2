@@ -1,60 +1,16 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>footer</title>
-    <style>
-        h6{
-            color:red;
-        }
-        p{
-            color:orange;
-        }
-      #fot{
-        color:red;
-      }
-        
-        
-    </style>
-</head>
-<body>
-    
 <!-- Footer -->
 <footer class="text-center text-lg-start bg-light text-muted">
   <!-- Section: Social media -->
   <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
     <!-- Left -->
-    <div class="me-4 text_center text-md-start d-none d-lg-block">
-      <span>FILL ALL THE INFORMATION</span>
+    <div class="me-5 d-none d-lg-block">
+      <span>Get connected with us on social networks:</span>
     </div>
     <!-- Left -->
-    <!-- Right -->
-    <div>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-twitter"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-google"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-    <!-- Right -->
+
   </section>
   <!-- Section: Social media -->
+
   <!-- Section: Links  -->
   <section class="">
     <div class="container text-center text-md-start mt-5">
@@ -72,6 +28,7 @@
           </p>
         </div>
         <!-- Grid column -->
+
         <!-- Grid column -->
         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
           <!-- Links -->
@@ -92,6 +49,7 @@
           </p>
         </div>
         <!-- Grid column -->
+
         <!-- Grid column -->
         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
           <!-- Links -->
@@ -112,6 +70,7 @@
           </p>
         </div>
         <!-- Grid column -->
+
         <!-- Grid column -->
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
           <!-- Links -->
@@ -130,15 +89,12 @@
     </div>
   </section>
   <!-- Section: Links  -->
+
   <!-- Copyright -->
-  <div id="fot" class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
     © 2021 Copyright:
     <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
   </div>
   <!-- Copyright -->
 </footer>
 <!-- Footer -->
-</body>
-</html>
-Footer
-© 2022 GitHub, Inc.
