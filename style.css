@@ -1,373 +1,162 @@
-:root{
-    --form-height:550px;
-    --form-width: 900px;
-    /*  Sea Green */
-    --left-color: #9fdeaf;
-    /*  Light Blue  */
-    --right-color: #96dbe2;
+/* body {
+    background: linear-gradient(45deg, #fc466b, #3f5efb);
+    height: 100vh;
+    font-family: "Montserrat", sans-serif;
   }
-  
-  body, html{
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    font-family: 'Helvetica Neue', sans-serif;
-    letter-spacing: 0.5px;
-  }
-  
-  .container{
-    width: var(--form-width);
-    height: var(--form-height);
-    position: relative;
-    margin: auto;
-    box-shadow: 2px 10px 40px rgba(22,20,19,0.4);
-    border-radius: 10px;
-    margin-top: 50px;
-  }
-  /* 
-  ----------------------
-        Overlay
-  ----------------------
-  */
-  .overlay{
-    width: 100%; 
-    height: 100%;
+   */
+   .container {
     position: absolute;
-    z-index: 100;
-    background-image: linear-gradient(to right, var(--left-color), var(--right-color));
-    border-radius: 10px;
-    color: white;
-    clip: rect(0, 385px, var(--form-height), 0);
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    
   }
   
-  .open-sign-up{
-      animation: slideleft 1s linear forwards;
-  }
-  
-  .open-sign-in{
-      animation: slideright 1s linear forwards;
-  }
-  
-  .overlay .sign-in, .overlay .sign-up{
-    /*  Width is 385px - padding  */
-    --padding: 50px;
-    width: calc(385px - var(--padding) * 2);
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    padding: 0px var(--padding);
-    text-align: center;
-  }
-  
-  .overlay .sign-in{
-    float: left;
-  }
-  
-  .overlay-text-left-animation{
-      animation: text-slide-in-left 1s linear;
-  }
-  .overlay-text-left-animation-out{
-      animation: text-slide-out-left 1s linear;
-  }
-  
-  .overlay .sign-up{
-    float:right;
-  }
-  
-  .overlay-text-right-animation{
-      animation: text-slide-in-right 1s linear;
-  }
-  
-  .overlay-text-right-animation-out{
-      animation: text-slide-out-right 1s linear;
-  }
-  
-  
-  .overlay h1{
-    margin: 0px 5px;
-    font-size: 2.1rem;
-  }
-  
-  .overlay p{
-    margin: 20px 0px 30px;
-    font-weight: 200;
-  }
-  /* 
-  ------------------------
-        Buttons
-  ------------------------
-  */
-  .switch-button, .control-button{
-    cursor: pointer;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 140px;
-    height: 40px;
-    font-size: 14px;
-    text-transform: uppercase;
-    background: none;
+  form {
+    background: linear-gradient(45deg, #fc466b, #3f5efb);
+    padding: 3em;
+    height: 405% !important;
+    margin-left: 30%;
+    margin-right: 30%;
     border-radius: 20px;
-    color: white;
-  }
-  
-  .switch-button{
-    border: 2px solid;
-  }
-  
-  .control-button{
-    border: none;
-    margin-top: 15px;
-  }
-  
-  .switch-button:focus, .control-button:focus{
-    outline:none;
-  }
-  
-  .control-button.up{
-    background-color: var(--left-color);
-  }
-  
-  .control-button.in{
-    background-color: var(--right-color);
-  }
-  
-  /* 
-  --------------------------
-        Forms
-  --------------------------
-  */
-  .form{
-    width: 100%; 
-    height: 100%;
-    position: absolute;
-    border-radius: 10px;
-  }
-  
-  .form .sign-in, .form .sign-up{
-    --padding: 50px;
-    position:absolute;
-      /*  Width is 100% - 385px - padding  */
-    width: calc(var(--form-width) - 385px - var(--padding) * 2);
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    padding: 0px var(--padding);
+    border-left: 1px solid rgba(34, 118, 106, 0.3);
+    border-top: 1px solid rgba(34, 118, 106, 0.3);
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+    box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
     text-align: center;
+    position: relative;
+    transition: all 0.2s ease-in-out;
   }
-  
-  /* Sign in is initially not displayed */
-  .form .sign-in{
-    display: none;
+  form p {
+    font-weight: 500;
+    color: #fff;
+    opacity: 0.7;
+    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: 60px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   }
-  
-  .form .sign-in{
-    left:0;
-  }
-  
-  .form .sign-up{
-    right: 0;
-  }
-  
-  .form-right-slide-in{
-    animation: form-slide-in-right 1s;
-  }
-  
-  .form-right-slide-out{
-    animation: form-slide-out-right 1s;
-  }
-  
-  .form-left-slide-in{
-    animation: form-slide-in-left 1s;
-  }
-  
-  .form-left-slide-out{
-    animation: form-slide-out-left 1s;
-  }
-  
-  .form .sign-in h1{
-    color: var(--right-color);
-    margin: 0;
-  }
-  
-  .form .sign-up h1{
-    color: var(--left-color);
-    margin: 0;
-  }
-  
-  .social-media-buttons{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin: 15px;
-  }
-  
-  .social-media-buttons .icon{
-    width: 40px;
-    height: 40px;
-    border: 1px solid #dadada;
-    border-radius: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10px 7px;
-  }
-  
-  .small{
-    font-size: 13px;
-    color: grey;
-    font-weight: 200;
-    margin: 5px;
-  }
-  
-  .social-media-buttons .icon svg{
-    width: 25px;
-    height: 25px;
-  }
-  
-  #sign-in-form input, #sign-up-form input{
-    margin: 12px;
-    font-size: 14px;
-    padding: 15px;
-    width: 260px;
-    font-weight: 300;
-    border: none;
-    background-color: #e4e4e494;
-    font-family: 'Helvetica Neue', sans-serif;
-    letter-spacing: 1.5px;
-    padding-left: 20px;
-  }
-  
-  #sign-in-form input::placeholder{
-    letter-spacing: 1px;
-  }
-  
-  .forgot-password{
+  form a {
+    text-decoration: none;
+    color: #ddd;
     font-size: 12px;
-    display: inline-block;
-    border-bottom: 2px solid #efebeb;
-    padding-bottom: 3px;
   }
-  
-  .forgot-password:hover{
+  form a:hover {
+    text-shadow: 2px 2px 6px #00000040;
+  }
+  form a:active {
+    text-shadow: none;
+  }
+  form input {
+    background: transparent;
+    width: 400px;
+    padding: 1em;
+    margin-bottom: 2em;
+    border: none;
+    border-left: 1px solid rgba(219, 17, 17, 0.3);
+    border-top: 1px solid rgba(161, 27, 27, 0.3);
+    border-radius: 5000px;
+    -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+    box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.592);
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  form input:hover {
+    background: rgba(85, 13, 13, 0.1);
+    box-shadow: 4px 4px 60px 8px rgba(0, 0, 0, 0.2);
+  }
+  form input[type=email]:focus, form input[type=password]:focus {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 4px 4px 60px 8px rgba(0, 0, 0, 0.2);
+  }
+  form input[type=button] {
+    margin-top: 10px;
+    width: 150px;
+    font-size: 1rem;
+  }
+  form input[type=button]:hover {
     cursor: pointer;
   }
-  
-  /* 
-  ---------------------------
-      Animation
-  ---------------------------
-  */
-  @keyframes slideright{
-    0%{
-      clip: rect(0, 385px, var(--form-height), 0);
-    }
-    30%{
-          clip: rect(0, 480px, var(--form-height), 0);
-    }
-    /*  we want the width to be slightly larger here  */
-    50%{
-       clip: rect(0px, calc(var(--form-width) / 2 + 480px / 2), var(--form-height), calc(var(--form-width) / 2 - 480px / 2));
-    }
-    80%{
-           clip: rect(0px, var(--form-width), var(--form-height), calc(var(--form-width) - 480px));
-    }
-    100%{
-       clip: rect(0px, var(--form-width), var(--form-height), calc(var(--form-width) - 385px));
-    }
+  form input[type=button]:active {
+    background: rgba(255, 255, 255, 0.2);
   }
   
-  @keyframes slideleft{
-    100%{
-      clip: rect(0, 385px, var(--form-height), 0);
-    }
-    70%{
-          clip: rect(0, 480px, var(--form-height), 0);
-    }
-    /*  we want the width to be slightly larger here  */
-    50%{
-       clip: rect(0px, calc(var(--form-width) / 2 + 480px / 2), var(--form-height), calc(var(--form-width) / 2 - 480px / 2));
-    }
-    30%{
-           clip: rect(0px, var(--form-width), var(--form-height), calc(var(--form-width) - 480px));
-    }
-    0%{
-       clip: rect(0px, var(--form-width), var(--form-height), calc(var(--form-width) - 385px));
-    }
+  ::-moz-placeholder {
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   }
   
-  @keyframes text-slide-in-left{
-    0% {
-      padding-left: 20px;
-    }
-    100% {
-      padding-left: 50px;
-    }
+  :-ms-input-placeholder {
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   }
   
-  @keyframes text-slide-in-right{
-    0% {
-      padding-right: 20px;
-    }
-    100% {
-      padding-right: 50px;
-    }
+  ::placeholder {
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   }
   
-  @keyframes text-slide-out-left{
-    0% {
-      padding-left: 50px;
-    }
-    100% {
-      padding-left: 20px;
-    }
+  .drop {
+    background: rgba(157, 5, 217, 0.3);
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border-left: 1px solid rgba(205, 12, 12, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 10px 10px 60px -8px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    transition: all 0.2s ease;
+  }
+  .drop-1 {
+    height: 100px;
+    width: 100px;
+    top: -20px;
+    left: 25%;
+    z-index: 1;
+  }
+  .drop-2 {
+    height: 100px;
+    width: 100px;
+    bottom: -1px;
+    right: 25%;
+    z-index: 1;
+  }
+  .drop-3 {
+    height: 100px;
+    width: 100px;
+    bottom: 120px;
+    right: 23%;
+    z-index: 1;
+  }
+  .drop-4 {
+    height: 130px;
+    width: 150px;
+    top: -60px;
+    right: 290px;
+  }
+  .drop-5 {
+    height: 90px;
+    width: 90px;
+    bottom: 170px;
+    left: 320px;
+    z-index: 1;
   }
   
-  @keyframes text-slide-out-right{
-    0% {
-      padding-right: 50px;
-    }
-    100% {
-      padding-right: 20px;
-    }
-  }
-  
-  @keyframes form-slide-in-right{
-    0%{
-      padding-right: 100px;
-    }
-    100%{
-      padding-right: 50px;
-    }
-  }
-  
-  @keyframes form-slide-in-left{
-    0%{
-      padding-left: 100px;
-    }
-    100%{
-      padding-left: 50px;
-    }
-  }
-  
-  @keyframes form-slide-out-right{
-    0%{
-      padding-right: 50px;
-    }
-    100%{
-      padding-right: 80px;
-    }
-  }
-  
-  @keyframes form-slide-out-left{
-    0%{
-      padding-left: 50px;
-    }
-    100%{
-      padding-left: 80px;
-    }
+  a,
+  input:focus,
+  select:focus,
+  textarea:focus,
+  button:focus {
+    outline: white;
   }

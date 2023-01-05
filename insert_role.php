@@ -16,25 +16,15 @@
     <title>Insert</title>
 </head>
 <body>
-<?php
-include "connection.php";
-?>
+
 <div class="container">
-  <form method="POST" enctype="multipart/form-data">
-    <p>Create New Account</p>
-    <input type="name" name="name" placeholder="Name"><br>
-    <input type="email" name="email" placeholder="Email"><br>
-    <input type="password" name="password" placeholder="Password"><br>
-    <div class="wrap-input100 validate-input" >
-	<input class="input100" type="file" name="userfile">
-	<span class="focus-input100"></span> 	
-	</div>
-	<?php 
-    if (isset($_GET['error'])): ?>
-	<p><?php echo $_GET['error']; ?></p>
-	<?php
-     endif 
-    ?>
+  <form method="POST">
+    <p>INSERT ROLE</p>
+    <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Role Name</label>
+    <input type="text" required class="form-control" name="role_name">
+
+  </div>
         <input type="submit" name="btn" value="Sign in"><br><br>
   </form>
 
@@ -48,28 +38,20 @@ include "connection.php";
 </div>
 
 <?php
-include "business_logic.php";
+
+include("connection.php");
+
 if(isset($_POST["btn"])){
-$name=$_POST['name'];
-$email=$_POST['email'];
-$pass=$_POST['password'];
-$sql="INSERT INTO `employee`( `name`, `email`, `password`) VALUES ('$name','$email','$pass')";
-    $result = mysqli_query($con,$sql);
-    if(!$result){
-        die(mysqli_error($con));
-    }
-    else{
-        echo "<script>
-        alert ('Inserted')
-        </script>";
-    // if($user_data = mysqli_fetch_array($result)){
-    //     $_SESSION["name"] = $user_data["name"];
-    //     echo "<script>alert('New Account Created ')</script>";
-    // }
-  }}
+
+    mysqli_query($con,"insert into roles(name) values ('".$_POST["role_name"]."')");
+    echo "<script>alert('New Role Created')</script>";
+
+}
+
 ?>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-</body>
+
+  </body>
 </html>
-

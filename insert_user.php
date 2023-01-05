@@ -13,28 +13,33 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <title>Insert</title>
+    <title>Insert_User</title>
 </head>
 <body>
-<?php
-include "connection.php";
-?>
+
 <div class="container">
   <form method="POST" enctype="multipart/form-data">
-    <p>Create New Account</p>
+    <p>Create New User</p>
     <input type="name" name="name" placeholder="Name"><br>
     <input type="email" name="email" placeholder="Email"><br>
     <input type="password" name="password" placeholder="Password"><br>
-    <div class="wrap-input100 validate-input" >
-	<input class="input100" type="file" name="userfile">
-	<span class="focus-input100"></span> 	
-	</div>
-	<?php 
-    if (isset($_GET['error'])): ?>
-	<p><?php echo $_GET['error']; ?></p>
-	<?php
-     endif 
+    <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Role</label>
+    <select required class="form-control" name="role_id">
+    <?php
+
+include("connection.php");
+
+  $data =   mysqli_query($con,"select * from roles");
+while($roles = mysqli_fetch_array($data)){
     ?>
+        <option value="<?php echo $roles["id"] ?>" ><?php echo $roles["name"] ?></option>
+
+
+        <?php } ?>
+    </select>
+
+  </div>
         <input type="submit" name="btn" value="Sign in"><br><br>
   </form>
 
@@ -48,28 +53,19 @@ include "connection.php";
 </div>
 
 <?php
-include "business_logic.php";
+
+include("connection.php");
+
 if(isset($_POST["btn"])){
-$name=$_POST['name'];
-$email=$_POST['email'];
-$pass=$_POST['password'];
-$sql="INSERT INTO `employee`( `name`, `email`, `password`) VALUES ('$name','$email','$pass')";
-    $result = mysqli_query($con,$sql);
-    if(!$result){
-        die(mysqli_error($con));
-    }
-    else{
-        echo "<script>
-        alert ('Inserted')
-        </script>";
-    // if($user_data = mysqli_fetch_array($result)){
-    //     $_SESSION["name"] = $user_data["name"];
-    //     echo "<script>alert('New Account Created ')</script>";
-    // }
-  }}
+
+    mysqli_query($con,"insert into users(name,email,password,role_id) values ('".$_POST["name"]."','".$_POST["email"]."','".md5($_POST["password"])."','".$_POST["role_id"]."')");
+    echo "<script>alert('New User Created')</script>";
+
+}
+
 ?>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-</body>
+  </body>
 </html>
-
