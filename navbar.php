@@ -7,9 +7,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="show_data.php">Show-Data</a>
+          <a class="nav-link active" aria-current="page" href="insert_user.php">Insert_User</a>
         </li>
-        
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="insert_role.php">insert_Role</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="show_user.php">Show_User</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="show_role.php">Show_Role</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
