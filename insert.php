@@ -1,69 +1,54 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>insert</title>
-    <style>
-        .form-label{
-            color:red;
-            font-weight: 800;
-            font-size:25px;
-           
-        }
-        html body{
-            background-color:lightblue;
-        }
-    </style>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  </head>
-  <body>
-
-  <?php
-  include('navbar.php');
-
-?>
-<br>
-<div class="container">
-
-<form method='POST'>
-
-<div class="mb-3">
-    <label  for="name" class="form-label">Name</label>
-    <input type="text" name='name' class="form-control">
-
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" name="email" class="form-control">
-   
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" name="password" class="form-control">
-  </div>
- 
-  <button type="submit" name="btn" class="btn btn-danger">Submit</button>
-</form>
-    </div>
-
-    <?php
-
-    
-    function insert_query($btn_name,$query){
-
-      include('connection.php');
-      if(isset($_POST[$btn_name])){
-        mysqli_query($con,$query);
-        echo"<script>alert('inserted')</script>";
-      }
-    }
-    insert_query("btn","insert into users (name,email,password) values ('".$_POST["name"]."','".$_POST["email"]."','".$_POST["password"]."')");
-    ?>
-
 <?php
+include "connection.php"
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-  include('footer.php');
-    ?>
+  <div class="container">
+    <input type="checkbox" id="check">
+    <div class="login form">
+      <header>REGISTRATION FORM</header>
+      <form method='POST' enctype="multipart/form-data">
+        <input type="text" name="first" placeholder="Enter your First Name" required>
+        <input type="text" name="last" placeholder="Enter your Last Name" required>
+        <input type="text" name="email" placeholder="Enter your email" required>
+        <input type="password" name="password" placeholder="Enter your password" required>
+        <br>
+        <br>
+        <label>Picture</label>
+        <input type="file" name="userfile" class="form-control">
+        <br>
+        <input name="btn" type="submit" class="button" value="Submit" required>
+      </form>
 
-  
+      <?php
+      if(isset($_POST['btn'])){
+        $first_name=$_POST['first'];
+        $last_name=$_POST['last'];
+        $email=$_POST['email'];
+        $pass=$_POST['password'];
+        $sql="INSERT INTO userss( first_name, last_name, email, password) VALUES ('$first_name','$last_name','$email','$pass')";
+        $result=mysqli_query($con,$sql);
+        move_uploaded_file($_FILES["userfile"]["tmp_name"],"images/".mysqli_insert_id($con).".jpeg");
+        if(!$result){
+          die(mysqli_error($con));
+        }
+        else{
+          echo "<script>
+          alert('Data inserted')
+          </script>";
+        }
+      }
+?>
+    </div>
+  </div>
+</body>
 </html>
+
