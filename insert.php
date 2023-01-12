@@ -1,73 +1,69 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <title>Insert</title>
+    <title>insert</title>
+    <style>
+        .form-label{
+            color:red;
+            font-weight: 800;
+            font-size:25px;
+           
+        }
+        html body{
+            background-color:lightblue;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   </head>
   <body>
-  
 
   <?php
-    include("navbar.php");
-  ?>
-
-
-<h1>Insert</h1>
-
-<form method="POST">
-    <input type="text" name="username" class="form-control" placeholder="Enter Name">
-    <br>
-    <input type="email" name="useremail" class="form-control" placeholder="Enter Email">
-    <br>
-    <input type="password" name="userpassword" class="form-control" placeholder="Enter Password">
-    <br>
-    <button type="submit" name="btn" class="btn btn-dark">Submit</button>
-</form>
-
-
-<?php
-    include("footer.php");
-  ?>
-
-
-
-
-<?php 
-
-include("business_logic.php");
-insert_query("btn","insert into users(name,email,password) values( '".$_POST["username"]."', '".$_POST["useremail"]."', '".$_POST["userpassword"]."' ) ");
+  include('navbar.php');
 
 ?>
+<br>
+<div class="container">
 
+<form method='POST'>
 
+<div class="mb-3">
+    <label  for="name" class="form-label">Name</label>
+    <input type="text" name='name' class="form-control">
 
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" name="email" class="form-control">
+   
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" name="password" class="form-control">
+  </div>
+ 
+  <button type="submit" name="btn" class="btn btn-danger">Submit</button>
+</form>
+    </div>
 
-    <!-- Optional JavaScript; choose one of the two! -->
+    <?php
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    function insert_query($btn_name,$query){
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
+      include('connection.php');
+      if(isset($_POST[$btn_name])){
+        mysqli_query($con,$query);
+        echo"<script>alert('inserted')</script>";
+      }
+    }
+    insert_query("btn","insert into users (name,email,password) values ('".$_POST["name"]."','".$_POST["email"]."','".$_POST["password"]."')");
+    ?>
 
+<?php
 
+  include('footer.php');
+    ?>
 
-
-
-
-
-
-
-
-
-  </body>
+  
 </html>
