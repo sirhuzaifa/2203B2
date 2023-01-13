@@ -11,57 +11,32 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
-
-    
-    
-    <select class="form-control" onchange="get_table(this.value)">
-  <option disabled selected>Select Role</option>
+    <h1></h1>
     <?php
-include("connection.php");
-  $data =   mysqli_query($con,"select * from roles");
-  while($roles = mysqli_fetch_array($data)){
-?>
-        <option value="<?php echo $roles["id"] ?>"> <?php echo $roles["name"] ?> </option>
 
-        <?php } ?>
-    </select>
-
-
-
-
-    <div id="table">
-
+     $xmldata = simplexml_load_file("https://www.geo.tv/rss/1/1");
+     $i = 1;
+    foreach ($xmldata->channel->item as $data){
+       
+    ?>
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $i ?>" aria-expanded="true" aria-controls="collapseOne">
+<?php echo $data-> title ?>
+      </button>
+    </h2>
+    <div id="collapse<?php echo $i ?>" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+       <?php echo $data-> description ?>
+      </div>
     </div>
-
-
-  <script>
-    function get_table(role_id){
-
-      var xmlhttp = new XMLHttpRequest();
-      xmlhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("table").innerHTML = this.responseText;
-      }
-      else if(this.status == 404){
-        document.getElementById("table").innerHTML = "Page not Found";
-      }
-    };
-    xmlhttp.open("GET","select_user_table.php?role_id="+role_id,true);
-    xmlhttp.send();
-
-    }
-  </script>
-
-
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
+  </div>
+  <?php $i++; } ?>
+</div>
+   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
+ 
   </body>
 </html>
