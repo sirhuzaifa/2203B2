@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 06, 2023 at 06:50 AM
+-- Generation Time: Jan 05, 2023 at 06:06 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.3.27
 
@@ -59,9 +59,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role_id`) VALUES
-(1, 'huzaifa', 'huzaifashakeel648@gmail.com', '202cb962ac59075b964b07152d234b70', 1),
-(2, 'salman123', 'salman@gmail.com', '202cb962ac59075b964b07152d234b70', 1),
-(3, 'wasiq', 'wasiq@gmail.com', '202cb962ac59075b964b07152d234b70', 2);
+(1, 'huzaifa', 'huzaifashakeel648@gmail.com', '202cb962ac59075b964b07152d234b70', 1);
 
 --
 -- Indexes for dumped tables
@@ -94,7 +92,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
