@@ -9,6 +9,7 @@
   </head>
   <body>
 <h1>SHOW_RECORDS</h1>
+<a class="btn btn-primary" href="insert.php">Create User</a>
 <table class="table table-dark">
   <thead>
     <tr>
@@ -17,7 +18,7 @@
       <th scope="col">Last Name</th>
       <th scope="col">Email</th>
       <th scope="col">Password</th>
-      <th scope="col">Delete</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -35,7 +36,7 @@ while ($row=mysqli_fetch_array($result)) {
     <td><?php echo $row["last_name"]?></td>
     <td><?php echo $row["email"]?></td>
     <td><?php echo $row["password"]?></td>
-    <td><a class="btn btn-danger" href="delete-user.php?id=<?php echo $row["id"]?>">Delete</a></td>
+    <td><a class="btn btn-success" href="edit.php?id=<?php echo $row["id"]?>">Edit</a><a class="btn btn-danger" href="delete-user.php?id=<?php echo $row["id"]?>">Delete</a></td>
   </tr>
 <?php 
 }

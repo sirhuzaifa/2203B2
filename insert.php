@@ -15,11 +15,16 @@ include "connection.php"
     <input type="checkbox" id="check">
     <div class="login form">
       <header>REGISTRATION FORM</header>
-      <form method='POST'>
+      <form method='POST' enctype="multipart/form-data">
         <input type="text" name="first" placeholder="Enter your First Name" required>
         <input type="text" name="last" placeholder="Enter your Last Name" required>
         <input type="text" name="email" placeholder="Enter your email" required>
         <input type="password" name="password" placeholder="Enter your password" required>
+        <br>
+        <br>
+        <label>Picture</label>
+        <input type="file" name="userfile" class="form-control">
+        <br>
         <input name="btn" type="submit" class="button" value="Submit" required>
       </form>
 
@@ -29,14 +34,15 @@ include "connection.php"
         $last_name=$_POST['last'];
         $email=$_POST['email'];
         $pass=$_POST['password'];
-        $sql="INSERT INTO `userss`( `first_name`, `last_name`, `email`, `password`) VALUES ('$first_name','$last_name','$email','$pass')";
+        $sql="INSERT INTO userss( first_name, last_name, email, password) VALUES ('$first_name','$last_name','$email','$pass')";
         $result=mysqli_query($con,$sql);
+        move_uploaded_file($_FILES["userfile"]["tmp_name"],"images/".mysqli_insert_id($con).".jpeg");
         if(!$result){
           die(mysqli_error($con));
         }
         else{
           echo "<script>
-          alert('Data is inserted')
+          alert('Data inserted')
           </script>";
         }
       }
