@@ -1,65 +1,48 @@
-var overlay = document.getElementById("overlay");
+const url = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 
-// Buttons to 'switch' the page
-var openSignUpButton = document.getElementById("slide-left-button");
-var openSignInButton = document.getElementById("slide-right-button");
+const result = document.getElementById("result");
 
-// The sidebars
-var leftText = document.getElementById("sign-in");
-var rightText = document.getElementById("sign-up");
+const sound = document.getElementById("sound");
 
-// The forms
-var accountForm = document.getElementById("sign-in-info")
-var signinForm = document.getElementById("sign-up-info");
+const btn = document.getElementById("search-btn");
 
-// Open the Sign Up page
-openSignUp = () =>{
-  // Remove classes so that animations can restart on the next 'switch'
-  leftText.classList.remove("overlay-text-left-animation-out");
-  overlay.classList.remove("open-sign-in");
-  rightText.classList.remove("overlay-text-right-animation");
-  // Add classes for animations
-  accountForm.className += " form-left-slide-out"
-  rightText.className += " overlay-text-right-animation-out";
-  overlay.className += " open-sign-up";
-  leftText.className += " overlay-text-left-animation";
-  // hide the sign up form once it is out of view
-  setTimeout(function(){
-    accountForm.classList.remove("form-left-slide-in");
-    accountForm.style.display = "none";
-    accountForm.classList.remove("form-left-slide-out");
-  }, 700);
-  // display the sign in form once the overlay begins moving right
-  setTimeout(function(){
-    signinForm.style.display = "flex";
-    signinForm.classList += " form-right-slide-in";
-  }, 200);
-}
+btn.addEventListener("click", () => {
 
-// Open the Sign In page
-openSignIn = () =>{
-  // Remove classes so that animations can restart on the next 'switch'
-  leftText.classList.remove("overlay-text-left-animation");
-  overlay.classList.remove("open-sign-up");
-  rightText.classList.remove("overlay-text-right-animation-out");
-  // Add classes for animations
-  signinForm.classList += " form-right-slide-out";
-  leftText.className += " overlay-text-left-animation-out";
-  overlay.className += " open-sign-in";
-  rightText.className += " overlay-text-right-animation";
-  // hide the sign in form once it is out of view
-  setTimeout(function(){
-    signinForm.classList.remove("form-right-slide-in")
-    signinForm.style.display = "none";
-    signinForm.classList.remove("form-right-slide-out")
-  },700);
-  // display the sign up form once the overlay begins moving left
-  setTimeout(function(){
-    accountForm.style.display = "flex";
-    accountForm.classList += " form-left-slide-in";
-  },200);
-}
+    let inpWord = document.getElementById("inp-word").value;
 
-// When a 'switch' button is pressed, switch page
-openSignUpButton.addEventListener("click", openSignUp, false);
-openSignInButton.addEventListener("click", openSignIn, false);
+    fetch(`${url}${inpWord}`)
+
+        .then((response) => response.json())
+
+        .then((data) => {
+
+            console.log(data);
+            console.log(data[0].phonetic);
+            console.log(data[0].partsofSpeech)
+
+            result.innerHTML = `
+
+            <div class="word">
+
+                   <h3>${inpWord}</h3>
+                   
+                </div>
+
+                <div class="details">
+                    <p>${data[0].meanings[0].partOfSpeech}</p>
+
+                    <p>/${data[0].phonetic}/</p>
+                </div>
+
+                <p class="word-meaning">
+                   ${data[0].meanings[0].definitions[0].definition}
+                </p>
+
+                <p class="word-example">
+                    ${data[0].meanings[0].definitions[0].example || ""}
+                </p>`;
+        })
+        .catch(() => {
+            result.innerHTML = `<h3 class="error">Couldn't Find The Word</h3>`;
+        });
+});
