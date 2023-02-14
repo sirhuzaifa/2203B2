@@ -1,48 +1,87 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>insert</title>
-    <!-- <link rel="stylesheet" href="style.css"> -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Show-Data</title>
   </head>
   <body>
-<h1>SHOW_RECORDS</h1>
-<a class="btn btn-primary" href="insert.php">Create User</a>
-<table class="table table-dark">
+  
+
+  <?php
+    include("navbar.php");
+
+
+     if(!isset($_SESSION["name"])){
+      echo "<script>window.location.assign('login.php')</script>";
+     } 
+      
+      
+  ?>
+
+
+<h1>Show-Data</h1>
+
+
+<table class="table table-striped table-dark">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
+      <th scope="col">Name</th>
       <th scope="col">Email</th>
-      <th scope="col">Password</th>
-      <th scope="col">Action</th>
+      <th scope="col">Status</th>
+      <th scope="col">Picture</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
     </tr>
   </thead>
   <tbody>
 
-  <?php
+
+  <?php 
+  
   include("connection.php");
-$sql="SELECT * FROM userss";
-$result=mysqli_query($con,$sql);
-while ($row=mysqli_fetch_array($result)) {
+
+  $data = mysqli_query($con,"select * from employee");
+    $i = 1;
+  while( $user_data =  mysqli_fetch_array($data) ){
+
   ?>
 
-  <tr>
-    <th scope="row"><?php echo $row['id']?></th>
-    <td><?php echo $row["first_name"]?></td>
-    <td><?php echo $row["last_name"]?></td>
-    <td><?php echo $row["email"]?></td>
-    <td><?php echo $row["password"]?></td>
-    <td><a class="btn btn-success" href="edit.php?id=<?php echo $row["id"]?>">Edit</a><a class="btn btn-danger" href="delete-user.php?id=<?php echo $row["id"]?>">Delete</a></td>
-  </tr>
-<?php 
-}
-?>
-  </tbody>
-</table> 
+    <tr>
+      <th scope="row"><?php echo $i ?></th>
+      <td><?php echo $user_data["name"] ?></td>
+      <td><?php echo $user_data["email"] ?></td>
+      <td><?php echo $user_data["status"] ?></td>
+      <td><img src="userimages/<?php echo $user_data["id"] ?>.jpeg" height="100px" width="100px"></td>
+      <td><a class="btn btn-success" href="edit_user.php?id=<?php echo $user_data["id"] ?>">Edit</a></td>
+      <td><a class="btn btn-danger" href="delete_user.php?id=<?php echo $user_data["id"] ?>">delete</a></td>
+    </tr>
+
+    <?php $i++; } ?>
+
 
   
+   
+  </tbody>
+</table>
+
+<a style="margin-left:45%;" class="btn btn-primary" href="insert.php">Create User</a>
+
+<?php
+    include("footer.php");
+  ?>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+
+
+  </body>
 </html>
